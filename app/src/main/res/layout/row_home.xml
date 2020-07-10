@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.dsu.wiproapplication.viewmodel.AdapterHomeViewModel" />
+    </data>
+
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/size5"
+        app:cardCornerRadius="@dimen/size5"
+        app:cardElevation="@dimen/size5"
+        app:strokeColor="@color/strokeColor"
+        app:strokeWidth="@dimen/stroke_width">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/margin10">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/titleTextView"
+                style="@style/AppTheme.Title.Bold"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin10"
+                android:text="@{viewModel.title}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/factImageView"
+                tools:text="Title" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/descriptionTextView"
+                style="@style/AppTheme.Description.Regular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin10"
+                android:text="@{viewModel.description}"
+                android:textColor="@android:color/darker_gray"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/factImageView"
+                app:layout_constraintTop_toBottomOf="@+id/titleTextView"
+                tools:text="Description" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/factImageView"
+                android:layout_width="@dimen/image_width"
+                android:layout_height="@dimen/image_height"
+                android:scaleType="centerCrop"
+                app:errorHolder="@{@drawable/error_holder}"
+                app:imageUrl="@{viewModel.imageUrl}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:placeHolder="@{@drawable/place_holder}"
+                tools:ignore="ContentDescription"
+                tools:src="@drawable/place_holder" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </com.google.android.material.card.MaterialCardView>
+</layout>

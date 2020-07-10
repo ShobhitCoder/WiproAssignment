@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WiproAssess</string>
+    <string name="app_name">WiproApplication</string>
     <string name="tag_line_splash">Welcome to Wipro Assessment</string>
     <string name="noInternet">Please check your internet connection.</string>
     <string name="requestFailed">Request failed, Please try again.</string>

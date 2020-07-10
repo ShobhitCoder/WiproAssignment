@@ -3,6 +3,7 @@ package com.dsu.wiproapplication.viewmodel
 import com.dsu.wiproapplication.api.AppAPIs
 import com.dsu.wiproapplication.global.AppConstants
 import com.dsu.wiproapplication.navigator.ActivityNavigator
+import com.dsu.wiproapplication.view.home.HomeActivity
 import com.wipro.assessment.global.rxjava.SchedulerProvider
 import com.wipro.assessment.view.base.BaseViewModel
 import io.reactivex.Single
@@ -30,7 +31,7 @@ class SplashViewModel(appAPIs: AppAPIs, schedulerProvider: SchedulerProvider) :
                 TimeUnit.MILLISECONDS,
                 AndroidSchedulers.mainThread()
             )
-            .doOnSuccess {  }
+            .doOnSuccess { navigator?.startActivity(HomeActivity::class.java) }
             .subscribe()
     }
 }
