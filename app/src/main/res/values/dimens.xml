@@ -1,0 +1,10 @@
+<resources>
+    <dimen name="font12">12sp</dimen>
+    <dimen name="font16">16sp</dimen>
+    <dimen name="font20">20sp</dimen>
+    <dimen name="size5">5dp</dimen>
+    <dimen name="image_width">100dp</dimen>
+    <dimen name="image_height">80dp</dimen>
+    <dimen name="margin10">10dp</dimen>
+    <dimen name="stroke_width">2dp</dimen>
+</resources>
