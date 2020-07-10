@@ -1,4 +1,4 @@
-package com.wipro.assessment.view.base
+package com.dsu.wiproapplication.view.base
 
 import android.view.View
 import androidx.recyclerview.widget.RecyclerView
