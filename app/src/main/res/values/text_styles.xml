@@ -1,0 +1,42 @@
+<resources>
+
+    <style name="AppTheme.TextAppearance" parent="TextAppearance.MaterialComponents.Body1"/>
+
+
+    <style name="Title" parent="AppTheme.TextAppearance">
+        <item name="android:textSize">@dimen/font16</item>
+        <item name="android:textColor">@color/colorBlack</item>
+    </style>
+
+    <style name="Description" parent="AppTheme.TextAppearance">
+        <item name="android:textSize">@dimen/font12</item>
+        <item name="android:textColor">@color/colorBlack</item>
+    </style>
+
+
+    <style name="AppTheme.Title.Splash" parent="Title">
+        <item name="fontFamily">@font/font_sf_bold</item>
+        <item name="android:fontFamily">@font/font_sf_bold</item>
+        <item name="android:textSize">@dimen/font20</item>
+        <item name="android:textColor">@color/colorWhite</item>
+    </style>
+    <style name="AppTheme.Title.Regular" parent="Title">
+        <item name="fontFamily">@font/font_sf_regular</item>
+        <item name="android:fontFamily">@font/font_sf_regular</item>
+    </style>
+    <style name="AppTheme.Title.Bold" parent="Title">
+        <item name="fontFamily">@font/font_sf_bold</item>
+        <item name="android:fontFamily">@font/font_sf_bold</item>
+    </style>
+
+
+    <style name="AppTheme.Description.Regular" parent="Description">
+        <item name="fontFamily">@font/font_sf_regular</item>
+        <item name="android:fontFamily">@font/font_sf_regular</item>
+    </style>
+    <style name="AppTheme.Description.Bold" parent="Description">
+        <item name="fontFamily">@font/font_sf_bold</item>
+        <item name="android:fontFamily">@font/font_sf_bold</item>
+    </style>
+
+</resources>
