@@ -15,7 +15,6 @@ import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 
-
 /**
  * Instrumented test, which will execute on an Android device.
  *
@@ -29,7 +28,8 @@ class HomeActivityTest {
     private var recyclerViewMatcher: RecyclerViewMatcher? = null
 
     @get:Rule
-    var homeActivity: ActivityTestRule<HomeActivity> = ActivityTestRule(HomeActivity::class.java, false, false)
+    var homeActivity: ActivityTestRule<HomeActivity> =
+        ActivityTestRule(HomeActivity::class.java, false, false)
 
     @Before
     @Throws(Exception::class)

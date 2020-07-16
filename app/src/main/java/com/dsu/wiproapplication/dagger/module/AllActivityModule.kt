@@ -16,12 +16,18 @@ import dagger.Provides
 class AllActivityModule {
 
     @Provides
-    internal fun provideSplashViewModel(appAPIs: AppAPIs, schedulerProvider: SchedulerProvider): SplashViewModel {
+    internal fun provideSplashViewModel(
+        appAPIs: AppAPIs,
+        schedulerProvider: SchedulerProvider
+    ): SplashViewModel {
         return SplashViewModel(appAPIs, schedulerProvider)
     }
 
     @Provides
-    internal fun provideHomeViewModel(appAPIs: AppAPIs, schedulerProvider: SchedulerProvider): HomeViewModel {
+    internal fun provideHomeViewModel(
+        appAPIs: AppAPIs,
+        schedulerProvider: SchedulerProvider
+    ): HomeViewModel {
         return HomeViewModel(appAPIs, schedulerProvider)
     }
 }

@@ -9,7 +9,8 @@ import io.reactivex.disposables.CompositeDisposable
  * Created by Shobhit Gupta on 10, July, 2020.
  * fiitjeeshobhit@gmail.com
  */
-abstract class BaseViewModel<N>(val appAPIs: AppAPIs, val schedulerProvider: SchedulerProvider) : ViewModel() {
+abstract class BaseViewModel<N>(val appAPIs: AppAPIs, val schedulerProvider: SchedulerProvider) :
+    ViewModel() {
 
     val compositeDisposable: CompositeDisposable = CompositeDisposable()
     var navigator: N? = null
