@@ -3,10 +3,13 @@ package com.dsu.wiproapplicationglobal
 import android.app.Activity
 import android.content.Context
 import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
 import android.net.NetworkInfo
+import android.os.Build
 import android.view.View
 import androidx.fragment.app.Fragment
 import com.google.android.material.snackbar.Snackbar
+
 
 /**
  * Created by Shobhit Gupta on 10, July, 2020.
@@ -20,16 +23,28 @@ import com.google.android.material.snackbar.Snackbar
  */
 
 fun Fragment.isNetworkConnected(isConnected: (Boolean) -> Unit) {
-    val cm = activity?.getSystemService(Context.CONNECTIVITY_SERVICE)
-    var activeNetwork: NetworkInfo? = null
+    val cm =
+        activity?.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
     if (cm != null) {
-        cm as ConnectivityManager
-        activeNetwork = cm.activeNetworkInfo
+        if (Build.VERSION.SDK_INT < 23) {
+            val ni = cm.activeNetworkInfo
+            if (ni != null) {
+                return isConnected(ni.isConnected && (ni.type == ConnectivityManager.TYPE_WIFI || ni.type == ConnectivityManager.TYPE_MOBILE || ni.type == ConnectivityManager.TYPE_VPN))
+            }
+        } else {
+            val n = cm.activeNetwork
+            if (n != null) {
+                val nc = cm.getNetworkCapabilities(n)
+                return isConnected(
+                    nc.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) || nc.hasTransport(
+                        NetworkCapabilities.TRANSPORT_WIFI
+                    ) || nc.hasTransport(NetworkCapabilities.TRANSPORT_VPN)
+                )
+            }
+        }
     }
-    @Suppress("DEPRECATION")
-    return isConnected(activeNetwork != null && activeNetwork.isConnectedOrConnecting)
+    return isConnected(false)
 }
-
 
 fun Activity?.isNetworkConnected(isConnected: (Boolean) -> Unit) {
     val cm = this?.getSystemService(Context.CONNECTIVITY_SERVICE)
