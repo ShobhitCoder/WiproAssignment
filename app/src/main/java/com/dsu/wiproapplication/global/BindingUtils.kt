@@ -18,7 +18,12 @@ object BindingUtils {
      */
     @BindingAdapter("imageUrl", "placeHolder", "errorHolder")
     @JvmStatic
-    fun loadImage(view: AppCompatImageView, url: String?, placeHolder: Drawable, errorHolder: Drawable) {
+    fun loadImage(
+        view: AppCompatImageView,
+        url: String?,
+        placeHolder: Drawable,
+        errorHolder: Drawable
+    ) {
         if (TextUtils.isEmpty(url))
             view.setImageDrawable(placeHolder)
         else

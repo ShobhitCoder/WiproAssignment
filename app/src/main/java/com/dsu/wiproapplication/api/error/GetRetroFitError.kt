@@ -1,4 +1,5 @@
 package com.dsu.wiproapplication.api.error
+
 import com.dsu.wiproapplication.navigator.ErrorNavigator
 import com.jakewharton.retrofit2.adapter.rxjava2.HttpException
 import org.json.JSONObject

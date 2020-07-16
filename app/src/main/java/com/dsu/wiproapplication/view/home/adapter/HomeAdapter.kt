@@ -12,7 +12,8 @@ class HomeAdapter : RecyclerView.Adapter<BaseViewHolder>() {
     private var factRowsList: MutableList<FactRows> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
-        val binding: RowHomeBinding = RowHomeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        val binding: RowHomeBinding =
+            RowHomeBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ItemViewHolder(binding)
     }
 
