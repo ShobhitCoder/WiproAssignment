@@ -89,6 +89,7 @@ class HomeFragment : Fragment(), HomeNavigator {
         }
     }
 
+
     /**
      * Subscribe observe so we detect data when any changes in live data
      */
