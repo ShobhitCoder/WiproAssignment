@@ -31,7 +31,7 @@ class SplashViewModel(appAPIs: AppAPIs, schedulerProvider: SchedulerProvider) :
                 TimeUnit.MILLISECONDS,
                 AndroidSchedulers.mainThread()
             )
-            .doOnSuccess { navigator?.startActivity(HomeActivity::class.java) }
+            .doOnSuccess { mNavigator?.startActivity(HomeActivity::class.java) }
             .subscribe()
     }
 }

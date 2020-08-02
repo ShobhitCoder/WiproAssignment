@@ -6,4 +6,6 @@ package com.dsu.wiproapplication.global
  */
 object AppConstants {
     const val SPLASH_DELAY = 1000
+    const val TITLE = "title"
+    const val IS_ERROR = "isError"
 }

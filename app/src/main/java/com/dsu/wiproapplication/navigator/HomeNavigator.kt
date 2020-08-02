@@ -5,6 +5,5 @@ package com.dsu.wiproapplication.navigator
  * fiitjeeshobhit@gmail.com
  */
 interface HomeNavigator : ErrorNavigator {
-
     fun onRefresh(isRefresh: Boolean)
 }
