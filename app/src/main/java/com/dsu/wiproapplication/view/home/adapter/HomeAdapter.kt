@@ -9,7 +9,7 @@ import com.dsu.wiproapplication.view.base.BaseViewHolder
 import com.dsu.wiproapplication.viewmodel.AdapterHomeViewModel
 
 class HomeAdapter : RecyclerView.Adapter<BaseViewHolder>() {
-    private var factRowsList: MutableList<FactRows> = ArrayList()
+    private var mFactRowsList: MutableList<FactRows> = ArrayList()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
         val binding: RowHomeBinding =
@@ -20,14 +20,14 @@ class HomeAdapter : RecyclerView.Adapter<BaseViewHolder>() {
     /**
      * Add data in list and notify adapter
      */
-    fun addItems(factRowsList: List<FactRows>) {
-        this.factRowsList = ArrayList()
-        this.factRowsList.addAll(factRowsList)
+    fun addItems(mFactRowsList: List<FactRows>) {
+        this.mFactRowsList = ArrayList()
+        this.mFactRowsList.addAll(mFactRowsList)
         notifyDataSetChanged()
     }
 
     override fun getItemCount(): Int {
-        return factRowsList.size
+        return mFactRowsList.size
     }
 
     override fun onBindViewHolder(holder: BaseViewHolder, position: Int) {
@@ -38,7 +38,7 @@ class HomeAdapter : RecyclerView.Adapter<BaseViewHolder>() {
         var rowBinding = binding
         private var adapterHomeViewModel: AdapterHomeViewModel? = null
         override fun onBind(position: Int) {
-            adapterHomeViewModel = AdapterHomeViewModel(factRowsList[position])
+            adapterHomeViewModel = AdapterHomeViewModel(mFactRowsList[position])
             rowBinding.viewModel = adapterHomeViewModel
             rowBinding.executePendingBindings()
         }

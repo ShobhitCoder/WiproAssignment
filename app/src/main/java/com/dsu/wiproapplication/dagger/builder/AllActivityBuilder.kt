@@ -2,7 +2,7 @@ package com.dsu.wiproapplication.dagger.builder
 
 import com.dsu.wiproapplication.view.home.HomeActivity
 import com.dsu.wiproapplication.view.splash.SplashActivity
-import com.wipro.assessment.dagger.module.AllActivityModule
+import com.wipro.assessment.dagger.module.ViewModelModule
 import dagger.Module
 import dagger.android.ContributesAndroidInjector
 
@@ -13,9 +13,9 @@ import dagger.android.ContributesAndroidInjector
  */
 @Module
 abstract class AllActivityBuilder {
-    @ContributesAndroidInjector(modules = [AllActivityModule::class])
+    @ContributesAndroidInjector(modules = [ViewModelModule::class])
     internal abstract fun bindSplashActivity(): SplashActivity
 
-    @ContributesAndroidInjector(modules = [AllActivityModule::class])
+    @ContributesAndroidInjector(modules = [ViewModelModule::class])
     internal abstract fun bindHomeActivity(): HomeActivity
 }

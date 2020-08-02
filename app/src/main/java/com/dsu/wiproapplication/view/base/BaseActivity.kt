@@ -14,7 +14,7 @@ import dagger.android.AndroidInjection
  */
 abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel<*>> : AppCompatActivity() {
 
-    var viewDataBinding: T? = null
+    var mViewDataBinding: T? = null
         private set
     private var mViewModel: V? = null
 
@@ -24,7 +24,6 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel<*>> : AppComp
      * @return variable id
      */
     abstract val bindingVariable: Int
-
     /**
      * @return layout resource id
      */
@@ -38,14 +37,13 @@ abstract class BaseActivity<T : ViewDataBinding, V : BaseViewModel<*>> : AppComp
      */
     abstract val viewModel: V
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         AndroidInjection.inject(this)
-        viewDataBinding = DataBindingUtil.setContentView(this, layoutId)
+        mViewDataBinding = DataBindingUtil.setContentView(this, layoutId)
         this.mViewModel = mViewModel ?: viewModel
-        viewDataBinding?.setVariable(bindingVariable, mViewModel)
-        viewDataBinding?.executePendingBindings()
+        mViewDataBinding?.setVariable(bindingVariable, mViewModel)
+        mViewDataBinding?.executePendingBindings()
     }
 }
 

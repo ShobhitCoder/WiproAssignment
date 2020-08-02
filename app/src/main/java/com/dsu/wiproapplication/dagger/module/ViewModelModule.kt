@@ -13,8 +13,7 @@ import dagger.Provides
  * fiitjeeshobhit@gmail.com
  */
 @Module
-class AllActivityModule {
-
+class ViewModelModule {
     @Provides
     internal fun provideSplashViewModel(
         appAPIs: AppAPIs,

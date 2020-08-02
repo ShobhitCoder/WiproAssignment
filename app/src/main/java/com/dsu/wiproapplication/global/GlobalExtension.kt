@@ -46,18 +46,6 @@ fun Fragment.isNetworkConnected(isConnected: (Boolean) -> Unit) {
     return isConnected(false)
 }
 
-fun Activity?.isNetworkConnected(isConnected: (Boolean) -> Unit) {
-    val cm = this?.getSystemService(Context.CONNECTIVITY_SERVICE)
-    var activeNetwork: NetworkInfo? = null
-    if (cm != null) {
-        cm as ConnectivityManager
-        activeNetwork = cm.activeNetworkInfo
-    }
-    @Suppress("DEPRECATION")
-    return isConnected(activeNetwork != null && activeNetwork.isConnectedOrConnecting)
-}
-
-
 /**
  * Show message using SnackBar
  */

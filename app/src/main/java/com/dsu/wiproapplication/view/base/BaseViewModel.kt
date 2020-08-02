@@ -13,7 +13,7 @@ abstract class BaseViewModel<N>(val appAPIs: AppAPIs, val schedulerProvider: Sch
     ViewModel() {
 
     val compositeDisposable: CompositeDisposable = CompositeDisposable()
-    var navigator: N? = null
+    var mNavigator: N? = null
 
     override fun onCleared() {
         compositeDisposable.dispose()

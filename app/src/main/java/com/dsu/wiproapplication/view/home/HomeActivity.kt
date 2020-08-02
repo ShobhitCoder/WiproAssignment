@@ -4,6 +4,7 @@ import android.os.Bundle
 import com.dsu.wiproapplication.BR
 import com.dsu.wiproapplication.R
 import com.dsu.wiproapplication.databinding.ActivityHomeBinding
+import com.dsu.wiproapplication.global.AppConstants
 import com.dsu.wiproapplication.view.home.fragment.HomeFragment
 import com.dsu.wiproapplication.viewmodel.HomeViewModel
 import com.google.android.material.appbar.AppBarLayout
@@ -25,16 +26,15 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
     //Field injection
     @Inject
     lateinit var homeViewModel: HomeViewModel
-    private var binding: ActivityHomeBinding? = null
-    private var isCollapsed = false
+    private var mBinding: ActivityHomeBinding? = null
+    private var mIsCollapsed = false
     var onTimeout = false
     var onUnknownError = false
     var onNetworkError = false
     var onUnknownErrorCode = false
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        binding = viewDataBinding
+        mBinding = mViewDataBinding
         behaviourNavigation()
         if (savedInstanceState == null)
             displayFragment()
@@ -50,7 +50,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
         homeFragment.homeViewModel = homeViewModel
         intent?.let {
             val bundle = Bundle()
-            bundle.putBoolean("isError", intent.getBooleanExtra("isError", false))
+            bundle.putBoolean(AppConstants.IS_ERROR, intent.getBooleanExtra(AppConstants.IS_ERROR, false))
             homeFragment.arguments = bundle
         }
         transaction.replace(R.id.frameLayout, homeFragment)
@@ -61,9 +61,9 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
      * Detect scroll behaviour when user scroll data
      */
     private fun behaviourNavigation() {
-        binding?.appBarLayout?.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { _, verticalOffset ->
-            isCollapsed = when {
-                Math.abs(verticalOffset) == binding?.appBarLayout?.totalScrollRange -> {
+        mBinding?.appBarLayout?.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { _, verticalOffset ->
+            mIsCollapsed = when {
+                Math.abs(verticalOffset) == mBinding?.appBarLayout?.totalScrollRange -> {
                     // Collapsed
                     true
                 }
@@ -84,8 +84,8 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
      * Detect if toll bar hide when user click system back press
      */
     override fun onBackPressed() {
-        if (isCollapsed)
-            binding?.appBarLayout?.setExpanded(true, true)
+        if (mIsCollapsed)
+            mBinding?.appBarLayout?.setExpanded(true, true)
         else
             super.onBackPressed()
     }
@@ -94,7 +94,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
      * Save title value
      */
     override fun onSaveInstanceState(outState: Bundle) {
-        outState.putString("title", "${binding?.toolBar?.title}")
+        outState.putString(AppConstants.TITLE, "${mBinding?.toolBar?.title}")
         super.onSaveInstanceState(outState)
     }
 
@@ -104,7 +104,7 @@ class HomeActivity : BaseActivity<ActivityHomeBinding, HomeViewModel>() {
     override fun onRestoreInstanceState(savedInstanceState: Bundle?) {
         super.onRestoreInstanceState(savedInstanceState)
         if (savedInstanceState != null) {
-            binding?.toolBar?.title = savedInstanceState.getString("title")
+            mBinding?.toolBar?.title = savedInstanceState.getString("title")
         }
     }
 }

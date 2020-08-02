@@ -24,7 +24,6 @@ import com.dsu.wiproapplicationglobal.showSnackBar
  * fiitjeeshobhit@gmail.com
  */
 class HomeFragment : Fragment(), HomeNavigator {
-
     companion object {
         fun newInstance(): HomeFragment {
             return HomeFragment()
@@ -56,9 +55,8 @@ class HomeFragment : Fragment(), HomeNavigator {
         arguments?.let {
             isError = it.getBoolean("isError")
         }
-
         homeActivity = activity as HomeActivity
-        homeViewModel?.navigator = this
+        homeViewModel?.mNavigator = this
         homeAdapter = HomeAdapter()
         binding?.factRecyclerView?.adapter = homeAdapter
         binding?.factSwipeRefreshLayout?.setOnRefreshListener {
@@ -116,12 +114,12 @@ class HomeFragment : Fragment(), HomeNavigator {
     }
 
     override fun onTimeout() {
-        binding?.factRecyclerView.showSnackBar(activity?.getString(R.string.requestFailed))
+        binding?.factRecyclerView.showSnackBar(activity?.getString(R.string.request_failed))
         homeActivity?.onTimeout = true
     }
 
     override fun onNetworkError() {
-        binding?.factRecyclerView.showSnackBar(activity?.getString(R.string.noInternet))
+        binding?.factRecyclerView.showSnackBar(activity?.getString(R.string.no_internet))
         homeActivity?.onNetworkError = true
     }
 }

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <variable
             name="viewModel"
             type="com.dsu.wiproapplication.viewmodel.AdapterHomeViewModel" />
@@ -64,8 +63,6 @@
                 app:placeHolder="@{@drawable/place_holder}"
                 tools:ignore="ContentDescription"
                 tools:src="@drawable/place_holder" />
-
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </com.google.android.material.card.MaterialCardView>
 </layout>

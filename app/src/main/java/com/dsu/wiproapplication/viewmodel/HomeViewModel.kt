@@ -31,17 +31,17 @@ class HomeViewModel(appAPIs: AppAPIs, schedulerProvider: SchedulerProvider) :
     private var disposable: Disposable? = null
 
     fun getFactData() {
-        navigator?.onRefresh(true)
+        mNavigator?.onRefresh(true)
         disposable = appAPIs.getFactData()
             .subscribeOn(schedulerProvider.io())
             .observeOn(schedulerProvider.ui())
             .subscribe({ response ->
-                navigator?.onRefresh(false)
+                mNavigator?.onRefresh(false)
                 factRowsListResponse?.value = response
                 title.set(response.title)
             }, { throwable ->
-                navigator?.onRefresh(false)
-                GetRetroFitError(navigator, throwable)
+                mNavigator?.onRefresh(false)
+                GetRetroFitError(mNavigator, throwable)
             }, {
 
             })
@@ -50,8 +50,8 @@ class HomeViewModel(appAPIs: AppAPIs, schedulerProvider: SchedulerProvider) :
 
     fun cancelRequest() {
         disposable?.dispose()
-        navigator?.onRefresh(false)
-        navigator?.onTimeout()
+        mNavigator?.onRefresh(false)
+        mNavigator?.onTimeout()
     }
 
     /**
@@ -60,12 +60,11 @@ class HomeViewModel(appAPIs: AppAPIs, schedulerProvider: SchedulerProvider) :
     fun checkData(factRowsList: List<FactRows>): List<FactRows> {
         val list = ArrayList<FactRows>()
         if (!factRowsList.isNullOrEmpty()) {
-            for (i in 0 until factRowsList.size) {
-                val row = factRowsList[i]
-                if (row.title.isNotEmptyAndNull() ||
-                    row.description.isNotEmptyAndNull() ||
-                    row.imageHref.isNotEmptyAndNull()
-                ) list.add(row)
+            for (element in factRowsList) {
+                if (element.title.isNotEmptyAndNull() ||
+                    element.description.isNotEmptyAndNull() ||
+                    element.imageHref.isNotEmptyAndNull()
+                ) list.add(element)
             }
         }
         return list

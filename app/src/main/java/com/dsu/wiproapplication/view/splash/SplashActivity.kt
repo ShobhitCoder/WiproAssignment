@@ -27,15 +27,15 @@ class SplashActivity : BaseActivity<ActivitySplashBinding, SplashViewModel>(),
     override val layoutId: Int
         get() = R.layout.activity_splash
     override val viewModel: SplashViewModel
-        get() = splashViewModel
+        get() = mSplashViewModel
 
     //Field injection
     @Inject
-    lateinit var splashViewModel: SplashViewModel
+    lateinit var mSplashViewModel: SplashViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        splashViewModel.navigator = this
+        mSplashViewModel.mNavigator = this
     }
 
 }
